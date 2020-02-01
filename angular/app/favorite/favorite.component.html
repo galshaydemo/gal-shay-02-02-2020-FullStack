@@ -1,0 +1,22 @@
+<p>
+  Favorite List
+</p>
+<table class="table table-striped">
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">name</th>
+    <th scope="col">Code</th>
+    <th scope="col"><a class="btn btn-primary" routerLink="/">Home</a></th>
+  </tr>
+
+  <tr *ngFor="let f of favorite">
+    <td>{{ f.Id }}</td>
+    <td>{{ f.Name }}</td>
+    <td>{{ f.Code }}</td>
+    <td>
+      <button class="btn btn-danger" (click)="deleteFavorite(f.Id)">
+        Delete
+      </button>
+    </td>
+  </tr>
+</table>

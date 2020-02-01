@@ -1,0 +1,71 @@
+<p>
+  Real Commerce Test
+</p>
+<div class="container">
+  <div class="row">
+    <div class="col" style="text-align: right;">
+      <div>
+        <h2>Choose City</h2>
+      </div>
+      <div>
+        <input style="width:200px;" type="text" (input)="getCityStartWith($event.target.value)"
+          placeholder="Search City" />
+      </div>
+      <div>
+        <select style="width:205px;" ng-model="mySelect" #t (change)="onItemChange(t)">
+          <option *ngFor="let c of data" value="{{ c.Key }}">
+            {{ c.LocalizedName }}
+          </option>
+        </select>
+      </div>
+
+
+
+      <div style="margin-top: 10px;margin-bottom: 10px;">
+        <button class="btn btn-primary" (click)=addFavorite()>Add to Favorite</button>
+
+      </div>
+      <div style="margin-top: 10px;margin-bottom: 10px;">
+        <button class="btn btn-success" (click)=getWeather()>Get Data</button>
+      </div>
+    </div>
+    <div class="col" style="text-align: right;">
+      <div>
+        <h2>Weather Status</h2>
+      </div>
+      <table class=" table table-striped" style="width: 100%;">
+        <tr>
+          <th>name</th>
+          <td>{{ this.cityName }}</td>
+        </tr>
+        <tr>
+          <th>Code</th>
+          <td>{{ this.cityKey }}</td>
+        </tr>
+        <tr>
+          <th>temperature</th>
+          <td>{{ this.temp }}</td>
+        </tr>
+        <tr>
+          <th>description</th>
+          <td>{{ this.desc }}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col" style="text-align: right;padding-right:10px">
+      <h2 style="text-align:right">
+        Favorite City
+      </h2>
+      <p>Press button to get Data</p>
+      <ul style="width:100%">
+        <li value="{{ c.Id }}" *ngFor="let c of favorite">
+          <button class="btn btn-info" (click)="getWeather(c.Code,c.Name)">
+            {{ c.Name }}
+          </button>
+        </li>
+      </ul>
+      <div style="text-align:right;">
+        <a class="btn btn-primary" routerLink="/favorite">Favorite Editor</a>
+      </div>
+    </div>
+  </div>
