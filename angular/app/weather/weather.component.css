@@ -1,0 +1,20 @@
+li {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 200px;
+  text-align: right;
+}
+ul {
+  list-style-type: none;
+}
+p {
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+}
+td,
+th {
+  text-align: right;
+}
