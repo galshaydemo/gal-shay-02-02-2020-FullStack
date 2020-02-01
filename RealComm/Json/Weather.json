@@ -1,0 +1,25 @@
+[
+    {
+        "LocalObservationDateTime": "2020-01-31T15:10:00+07:00",
+        "EpochTime": 1580458200,
+        "WeatherText": "Mostly cloudy",
+        "WeatherIcon": 6,
+        "HasPrecipitation": false,
+        "PrecipitationType": null,
+        "IsDayTime": true,
+        "Temperature": {
+            "Metric": {
+                "Value": 28.6,
+                "Unit": "C",
+                "UnitType": 17
+            },
+            "Imperial": {
+                "Value": 84,
+                "Unit": "F",
+                "UnitType": 18
+            }
+        },
+        "MobileLink": "http://m.accuweather.com/en/id/telanaipura/3431644/current-weather/3431644?lang=en-us",
+        "Link": "http://www.accuweather.com/en/id/telanaipura/3431644/current-weather/3431644?lang=en-us"
+    }
+]
