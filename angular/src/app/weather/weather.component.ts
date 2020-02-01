@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { } from '@angular/router'
 import { City,CityAuto,Weather } from './city';
 import { HttpClient } from '@angular/common/http';
+import { ConstantsService } from '../../app/common/services/constants.service'
 @Component({
   
   selector: 'app-weather',
@@ -18,10 +19,10 @@ export class WeatherComponent implements OnInit {
   temp=20.0;
   desc='nice sunny day'
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,private _constant: ConstantsService) { }
 public getFavorite(){
    
-    return this.httpClient.get('https://localhost:44340/api/Favorite');
+    return this.httpClient.get(this._constant.baseAppUrl +'/Favorite');
   }
   ngOnInit() {
     
@@ -47,7 +48,7 @@ public getFavorite(){
       alert('Choose City')
       return
     }
-    const url='https://localhost:44340/api/Weather/GetCurrentWeather?city='+code;
+    const url=this._constant.baseAppUrl+'/Weather/GetCurrentWeather?city='+code;
     this.httpClient.get<Weather>(url).subscribe((data)=>
     {
       this.desc=data.WeatherText;
@@ -60,7 +61,7 @@ public getFavorite(){
   addFavorite()
   {
     
-    const url='https://localhost:44340/api/Favorite'
+    const url=this._constant.baseAppUrl +'/Favorite'
     const data={Name:this.cityName,Code:this.cityKey}
     this.httpClient.post(url,data).subscribe((data)=>
     {
@@ -69,7 +70,7 @@ public getFavorite(){
       console.log(error.status)});
   }
   getCityStartWith(str:string) {
-    this.httpClient.get<CityAuto[]>('https://localhost:44340/api/Weather/Search?q='+str).subscribe((data)=>
+    this.httpClient.get<CityAuto[]>(this._constant.baseAppUrl+'/Weather/Search?q='+str).subscribe((data)=>
     {
       
       this.data=data

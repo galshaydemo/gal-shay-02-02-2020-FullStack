@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { ConstantsService } from '../../app/common/services/constants.service'
 
 @Component({
   selector: 'app-favorite',
@@ -10,15 +10,15 @@ import { HttpClient } from '@angular/common/http';
 export class FavoriteComponent implements OnInit {
   favorite[]:[];
   
-    constructor(private httpClient: HttpClient) { }
+    constructor(private httpClient: HttpClient,private constantService:ConstantsService) { }
   
  public getFavorite(){
    
-    return this.httpClient.get('https://localhost:44340/api/Favorite');
+    return this.httpClient.get(this.constantService.baseAppUrl+ '/Favorite');
   }
   deleteFavorite(id)
   {
-    const url='https://localhost:44340/api/Favorite?id='+id
+    const url=this.constantService.baseAppUrl+ '/Favorite?id='+id
     return this.httpClient.delete(url).subscribe((data)=>
     {
       console.log(data)
@@ -34,33 +34,7 @@ export class FavoriteComponent implements OnInit {
    }
    )
    
-    /*this.favorite=[
-  {
-
-    "Id": "215854",
-    "Name": "Tel Aviv",
-  },
-  {
-    "Id": "3431644",
-    "Name": "Telanaipura",
-
-  },
-  {
-    "Id": "300558",
-    "Name": "Telok Blangah New Town",
-
-  },
-  {
-    "Id": "325876",
-    "Name": "Telford",
-
-  },
-  {
-    "Id": "169072",
-    "Name": "Telavi",
-  },
-
-]*/
+    
   }
 
 }
